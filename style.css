@@ -1,5 +1,8 @@
-/* ...existing code... */
 * {
-  font-family: "Poppins", sans-serif;
+  font-family: "Poppins", "Segoe UI", sans-serif;
 }
-/* ...existing code... */
+
+.bg-gray-50 {
+  border: #343434 1px solid;
+  background-color: #fff !important;
+}

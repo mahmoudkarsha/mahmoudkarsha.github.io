@@ -1,19 +1,75 @@
 // Variables for dynamic content
 const profileImage = "https://avatars.githubusercontent.com/u/63265034?s=256&v=4";
 const fullName = "Mahmoud Abdulbari Karsha";
-const contactInfo = "Erbil, Kurdistan Region | +964 751 760 6295 | mahmoud.bari.karsha@gmail.com";
+const email = "mahmoud.bari.karsha@gmail.com";
+const phone = "+964 751 760 6295";
+const linkedin =
+  "https://www.linkedin.com/in/mahmoud-karsha-539434340?utm_source=share_via&utm_content=profile&utm_medium=member_android";
+const contactInfo = `Erbil, Kurdistan Region`;
 
 const professionalSummary = `Software Engineer with 6+ years of experience in full-stack development, backend systems, and infrastructure. Proven ability to build scalable web and mobile applications, manage servers, and deliver production-ready solutions.`;
 
 const technicalSkills = [
-  { category: "Languages", skills: "TypeScript/JavaScript, Python, Dart" },
-  { category: "Front End Frameworks", skills: "React, Flutter, NextJS, React Native (Expo)" },
-  { category: "Back End Frameworks", skills: "NestJS, ExpressJs, FastAPI" },
-  { category: "Databases", skills: "MongoDB, PostgreSQL, Redis" },
-  { category: "AI", skills: "RAG systems and AI Agents" },
-  { category: "Infrastructure", skills: "Ubuntu Server, Windows Server, VPS, DNS, Email Servers" },
-  { category: "DevOps", skills: "Docker and Docker Compose, CI/CD (basic), Nginx and Traefik" },
-  { category: "Networking", skills: "" },
+  {
+    category: "Languages",
+    skills: [
+      { label: "TypeScript/JavaScript", link: "https://www.typescriptlang.org/" },
+      { label: "Python", link: "https://www.python.org/" },
+      { label: "Dart", link: "https://dart.dev/" },
+    ],
+  },
+  {
+    category: "Front End Frameworks",
+    skills: [
+      { label: "React", link: "https://reactjs.org/" },
+      { label: "Flutter", link: "https://flutter.dev/" },
+      { label: "NextJS", link: "https://nextjs.org/" },
+      { label: "React Native (Expo)", link: "https://reactnative.dev/" },
+    ],
+  },
+  {
+    category: "Back End Frameworks",
+    skills: [
+      { label: "NestJS", link: "https://nestjs.com/" },
+      { label: "ExpressJs", link: "https://expressjs.com/" },
+      { label: "FastAPI", link: "https://fastapi.tiangolo.com/" },
+    ],
+  },
+  {
+    category: "Databases",
+    skills: [
+      { label: "MongoDB", link: "https://www.mongodb.com/" },
+      { label: "PostgreSQL", link: "https://www.postgresql.org/" },
+      { label: "Redis", link: "https://redis.io/" },
+    ],
+  },
+  { category: "AI", skills: [{ label: "RAG systems and AI Agents", link: "#" }] },
+  {
+    category: "Infrastructure",
+    skills: [
+      { label: "Ubuntu Server", link: "https://ubuntu.com/server" },
+      { label: "Windows Server", link: "https://www.microsoft.com/en-us/windows-server" },
+      { label: "VPS", link: "#" },
+      { label: "DNS", link: "#" },
+      { label: "Email Servers", link: "#" },
+    ],
+  },
+  {
+    category: "DevOps",
+    skills: [
+      { label: "Docker and Docker Compose", link: "https://www.docker.com/" },
+      { label: "CI/CD (basic)", link: "#" },
+      { label: "Nginx and Traefik", link: "#" },
+    ],
+  },
+  {
+    category: "Networking",
+    skills: [
+      { label: "Routing", link: "#" },
+      { label: "Switching", link: "#" },
+      { label: "Firewall Configuration", link: "#" },
+    ],
+  },
 ];
 
 const education = "BSc in Computer Systems Engineering - Cordoba Private University (2024)";
@@ -30,11 +86,16 @@ const professionalExperience = [
     title: "Software Engineer - NewStarters (Remote, Germany)",
     duration: "Feb 2023 - Present",
     responsibilities: [
-      "Built interactive landing pages using React.",
-      "Developed mobile applications using React Native (Expo).",
-      "Engineered full-stack platforms using React, Node.js, and PostgreSQL.",
-      "Developed WhatsApp chatbot using Python.",
-      "Managed VPS infrastructure, DNS, and email servers (Postfix, Dovecot).",
+      "Built many web applications using React, NextJS, and NestJS for various clients in Germany.",
+      "Built FastAPI service for serving AI services",
+      "Built many Typescript libraries for internal use and open source.",
+      "Built RAG system for document search and question answering using Langchain, OpenAI, OpenRouter and FAISS.",
+      "Built SSO Idp and authorization server (OAuth2 and OpenID Connect).",
+      "Built Multi-Product microservice based platform that acts as a foundation for various applications.",
+      "Built interactive landing pages using React and NextJS.",
+      "Developed mobile applications using Flutter",
+      "Developed WhatsApp chatbot",
+      "Managed VPS infrastructure, DNS, custom cloud (Coolify), Dockers, Traefik proxy, and email servers (Mailcow).",
     ],
   },
   {
