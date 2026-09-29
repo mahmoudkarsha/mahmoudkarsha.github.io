@@ -3,74 +3,78 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mahmoud Abdulbari Karsha</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Mahmoud Abdulbari Karsha — Software Engineer</title>
+    <meta
+      name="description"
+      content="Mahmoud Abdulbari Karsha — Software Engineer specializing in full-stack development, backend systems, and infrastructure."
+    />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
     <script src="content.js"></script>
     <script src="script.js" defer></script>
-    <link rel="stylesheet" href="style.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
   </head>
-  <body class="bg-white text-gray-800 font-sans">
-    <div class="max-w-5xl mx-auto px-6 py-10">
+  <body>
+    <main class="page">
       <!-- Header -->
-      <div class="flex flex-col md:flex-row items-center gap-6 border-b pb-8">
-        <img class="w-32 h-32 rounded-lg object-cover border" />
-        <div class="text-center md:text-left">
-          <h1 class="text-3xl font-bold"></h1>
-          <p class="text-gray-600 mt-2"></p>
+      <header class="hero">
+        <img id="avatar" class="avatar" alt="Portrait of Mahmoud Abdulbari Karsha" width="112" height="112" />
+        <div class="hero-text">
+          <h1 id="name"></h1>
+          <p class="role">Software Engineer</p>
+          <ul id="contact" class="contact"></ul>
         </div>
-        <button id="downloadBtn" class="ml-auto bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">
+        <a class="btn" href="cv.pdf" download="Mahmoud_Abdulbari_Karsha_CV.pdf">
+          <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+            <path d="M12 3v12m0 0l-5-5m5 5l5-5M5 21h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
           Download CV
-        </button>
-      </div>
+        </a>
+      </header>
 
-      <!-- Sections Wrapper -->
-      <div class="grid md:grid-cols-1 gap-8 mt-10">
-        <!-- Left -->
-        <div class="space-y-2">
-          <!-- Summary -->
-          <div class="bg-gray-50 p-5 rounded-xl shadow-sm">
-            <h2 class="font-bold text-sm mb-2">Professional Summary</h2>
-            <p class="text-sm leading-relaxed summary"></p>
-          </div>
-
-          <!-- Skills -->
-          <div class="bg-gray-50 p-5 rounded-xl shadow-sm">
-            <h2 class="font-bold text-sm mb-3">Technical Skills</h2>
-            <div class="text-sm space-y-1 skills"></div>
-          </div>
-
-          <!-- Experience -->
-          <div class="bg-gray-50 p-5 rounded-xl shadow-sm">
-            <h2 class="font-bold text-sm mb-3">Professional Experience</h2>
-            <div class="experience"></div>
-          </div>
-
-          <!-- Projects -->
-          <div class="bg-gray-50 p-5 rounded-xl shadow-sm">
-            <h2 class="font-bold text-sm mb-2">Projects</h2>
-            <ul class="text-sm space-y-2 projects"></ul>
-          </div>
-          <!-- Education -->
-          <div class="bg-gray-50 p-5 rounded-xl shadow-sm">
-            <h2 class="font-bold text-sm mb-2">Education</h2>
-            <p class="text-sm education"></p>
-          </div>
-          <!-- Languages -->
-          <div class="bg-gray-50 p-5 rounded-xl shadow-sm">
-            <h2 class="font-bold text-sm mb-2">Languages</h2>
-            <ul class="text-sm space-y-1 languages"></ul>
-          </div>
-          <!-- Certificates -->
-          <div class="bg-gray-50 p-5 rounded-xl shadow-sm">
-            <h2 class="font-bold text-sm mb-2">Certificates</h2>
-            <ul class="text-sm space-y-1 certificates"></ul>
-          </div>
+      <section class="section">
+        <h2>About</h2>
+        <div class="section-body">
+          <p id="summary" class="lead"></p>
         </div>
-      </div>
+      </section>
 
-      <!-- Footer -->
-      <div class="text-center text-xs text-gray-400 mt-10">© 2026 Mahmoud Abdulbari Karsha</div>
-    </div>
+      <section class="section">
+        <h2>Experience</h2>
+        <div id="experience" class="section-body timeline"></div>
+      </section>
+
+      <section class="section">
+        <h2>Skills</h2>
+        <dl id="skills" class="section-body skills"></dl>
+      </section>
+
+      <section class="section">
+        <h2>Projects</h2>
+        <div id="projects" class="section-body projects"></div>
+      </section>
+
+      <section class="section">
+        <h2>Education</h2>
+        <div id="education" class="section-body"></div>
+      </section>
+
+      <section class="section">
+        <h2>Languages</h2>
+        <ul id="languages" class="section-body languages"></ul>
+      </section>
+
+      <section class="section">
+        <h2>Certificates</h2>
+        <ul id="certificates" class="section-body list"></ul>
+      </section>
+
+      <footer class="footer">© <span id="year"></span> Mahmoud Abdulbari Karsha</footer>
+    </main>
   </body>
 </html>

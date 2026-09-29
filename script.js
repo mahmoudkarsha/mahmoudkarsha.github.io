@@ -1,114 +1,131 @@
-// Functions to dynamically populate content
+// Renders the page from the data defined in content.js
+
+const icons = {
+  location:
+    '<path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/>',
+  email: '<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/>',
+  phone:
+    '<path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/>',
+  linkedin:
+    '<rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 11v5M8 8v.01M12 16v-5M16 16v-3a2 2 0 0 0-4 0"/>',
+  external: '<path d="M7 17L17 7M9 7h8v8"/>',
+};
+
+function icon(name, size = 15) {
+  return `<svg viewBox="0 0 24 24" width="${size}" height="${size}" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${icons[name]}</svg>`;
+}
+
+function escapeHtml(value) {
+  return String(value).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
+}
+
+function isRealLink(link) {
+  return Boolean(link) && link !== "#";
+}
+
 function populateProfile() {
-  document.querySelector("img").src = profileImage;
-  document.querySelector("h1").textContent = fullName;
+  const avatar = document.getElementById("avatar");
+  avatar.src = profileImage;
+  document.getElementById("name").textContent = fullName;
 
-  const contactContent = `${contactInfo}
-  <br>
-  <a href="mailto:${email}">${email}</a> 
-  <br>
-   <a href="https://wa.me/${phone.replace(/\D/g, "")}?text=Hello%20Mahmoud">${phone}</a>  
-  <br>
-   <a href="${linkedin}" target="_blank">LinkedIn</a>   `;
-
-  document.querySelector("p").innerHTML = contactContent;
+  const whatsapp = `https://wa.me/${phone.replace(/\D/g, "")}?text=Hello%20Mahmoud`;
+  document.getElementById("contact").innerHTML = `
+    <li>${icon("location")}${escapeHtml(contactInfo)}</li>
+    <li>${icon("email")}<a href="mailto:${email}">${escapeHtml(email)}</a></li>
+    <li>${icon("phone")}<a href="${whatsapp}" target="_blank" rel="noopener">${escapeHtml(phone)}</a></li>
+    <li>${icon("linkedin")}<a href="${linkedin}" target="_blank" rel="noopener">LinkedIn</a></li>
+  `;
 }
 
 function populateSummary() {
-  const summaryContent = `${professionalSummary}`;
-
-  document.querySelector(".summary").innerHTML = summaryContent;
-}
-
-function populateSkills() {
-  const skillsContainer = document.querySelector(".skills");
-  technicalSkills.forEach((skill) => {
-    const skillElement = document.createElement("p");
-    const skillLinks = skill.skills
-      .map(
-        (s) => `  <span class="m-1 p-1 rounded bg-white border border-gray-300 text-xs">
-                      <a href="${s.link}" target="_blank">${s.label}</a>
-                   </span>`,
-      )
-      .join("");
-    skillElement.innerHTML = `
-      <div class="mt-2 flex flex-row items-center gap-2">
-        <p>${skill.category}</p>
-        <span class="flex flex-wrap gap-2">${skillLinks}</span>
-       </div>`;
-    skillsContainer.appendChild(skillElement);
-  });
-}
-
-function populateEducation() {
-  document.querySelector(".education").textContent = education;
-}
-
-function populateLanguages() {
-  const languagesContainer = document.querySelector(".languages");
-  languages.forEach((language) => {
-    const languageElement = document.createElement("li");
-    languageElement.textContent = language;
-    languagesContainer.appendChild(languageElement);
-  });
+  document.getElementById("summary").textContent = professionalSummary;
 }
 
 function populateExperience() {
-  const experienceContainer = document.querySelector(".experience");
-  professionalExperience.forEach((job) => {
-    const jobElement = document.createElement("div");
-    jobElement.innerHTML = `
-      <p class="font-bold">${job.title} | ${job.duration}</p>
-      <ul class="list-disc ml-5 text-sm mt-1 space-y-1">
-        ${job.responsibilities.map((responsibility) => `<li>${responsibility}</li>`).join("")}
-      </ul>
-    `;
-    experienceContainer.appendChild(jobElement);
-    experienceContainer.appendChild(document.createElement("br"));
-  });
+  const container = document.getElementById("experience");
+  container.innerHTML = professionalExperience
+    .map((job) => {
+      // Titles look like "Role - Company (Location)"
+      const [role, ...rest] = job.title.split(" - ");
+      const org = rest.join(" - ").replace(/^\((.*)\)$/, "$1");
+      return `
+        <article class="job">
+          <div class="job-head">
+            <h3>${escapeHtml(role)}</h3>
+            <span class="date">${escapeHtml(job.duration)}</span>
+          </div>
+          ${org ? `<p class="org">${escapeHtml(org)}</p>` : ""}
+          <ul>${job.responsibilities.map((r) => `<li>${escapeHtml(r)}</li>`).join("")}</ul>
+        </article>`;
+    })
+    .join("");
+}
+
+function populateSkills() {
+  const container = document.getElementById("skills");
+  container.innerHTML = technicalSkills
+    .map((group) => {
+      const tags = group.skills
+        .map((s) =>
+          isRealLink(s.link)
+            ? `<a class="tag" href="${s.link}" target="_blank" rel="noopener">${escapeHtml(s.label)}</a>`
+            : `<span class="tag">${escapeHtml(s.label)}</span>`,
+        )
+        .join("");
+      return `<dt>${escapeHtml(group.category)}</dt><dd>${tags}</dd>`;
+    })
+    .join("");
 }
 
 function populateProjects() {
-  const projectsContainer = document.querySelector(".projects");
-  projects.forEach((project) => {
-    const projectElement = document.createElement("li");
-    if (project.link) {
-      projectElement.innerHTML = `<a href="${project.link}" target="_blank"><strong>${project.name}:</strong></a> ${project.description}`;
-    } else {
-      projectElement.innerHTML = `<strong>${project.name}:</strong> <br/> ${project.description}`;
-    }
-    projectsContainer.appendChild(projectElement);
-  });
+  const container = document.getElementById("projects");
+  container.innerHTML = projects
+    .map((project) => {
+      const body = `
+        <h3>${escapeHtml(project.name)}${project.link ? icon("external", 16) : ""}</h3>
+        <p>${escapeHtml(project.description)}</p>`;
+      return project.link
+        ? `<a class="card" href="${project.link}" target="_blank" rel="noopener">${body}</a>`
+        : `<div class="card">${body}</div>`;
+    })
+    .join("");
+}
+
+function populateEducation() {
+  // Format: "Degree - Institution (Year)"
+  const [degree, ...rest] = education.split(" - ");
+  document.getElementById("education").innerHTML = `
+    <div class="edu">
+      <h3>${escapeHtml(degree)}</h3>
+      ${rest.length ? `<p>${escapeHtml(rest.join(" - "))}</p>` : ""}
+    </div>`;
+}
+
+function populateLanguages() {
+  document.getElementById("languages").innerHTML = languages
+    .map((entry) => {
+      const [name, level] = entry.split(":").map((s) => s.trim());
+      return `<li><span>${escapeHtml(name)}</span>${level ? `<span class="level">${escapeHtml(level)}</span>` : ""}</li>`;
+    })
+    .join("");
 }
 
 function populateCertificates() {
-  const certificatesContainer = document.querySelector(".certificates");
-  certificates.forEach((certificate) => {
-    const { label, link } = certificate;
-    const certificateElement = document.createElement("li");
-    if (link) {
-      certificateElement.innerHTML = `<a href="${link}" target="_blank">${label}</a>`;
-    } else {
-      certificateElement.textContent = label;
-    }
-    certificatesContainer.appendChild(certificateElement);
-  });
+  document.getElementById("certificates").innerHTML = certificates
+    .map(({ label, link }) =>
+      isRealLink(link)
+        ? `<li><a href="${link}" target="_blank" rel="noopener">${escapeHtml(label)}</a></li>`
+        : `<li>${escapeHtml(label)}</li>`,
+    )
+    .join("");
 }
 
-document.getElementById("downloadBtn").addEventListener("click", () => {
-  const link = document.createElement("a");
-  link.href = "cv.pdf";
-  link.download = "Mahmoud_Abdulbari_Karsha_CV.pdf";
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
-});
-// Populate all sections
 populateProfile();
 populateSummary();
+populateExperience();
 populateSkills();
+populateProjects();
 populateEducation();
 populateLanguages();
-populateExperience();
-populateProjects();
 populateCertificates();
+document.getElementById("year").textContent = new Date().getFullYear();
