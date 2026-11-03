@@ -3,8 +3,7 @@ const profileImage = "https://avatars.githubusercontent.com/u/63265034?s=800&v=4
 const fullName = "Mahmoud Abdulbari Karsha";
 const email = "mahmoud.bari.karsha@gmail.com";
 const phone = "+964 751 760 6295";
-const linkedin =
-  "https://www.linkedin.com/in/mahmoud-karsha-539434340?utm_source=share_via&utm_content=profile&utm_medium=member_android";
+const linkedin = "";
 const contactInfo = `Erbil, Kurdistan Region`;
 
 const professionalSummary = `Software Engineer with 7+ years of experience in full-stack development, backend systems, and infrastructure. Proven ability to build scalable web and mobile applications, manage servers, and deliver production-ready solutions.`;
@@ -68,7 +67,7 @@ const technicalSkills = [
 
 const education = "BSc in Computer Systems Engineering - Cordoba Private University (2024)";
 
-const languages = ["Northern Kurdish: native", "Central Kurdish: good", "Arabic: fluent", "English: very good"];
+const languages = ["Northern Kurdish: native", "Central Kurdish: good", "Arabic: native", "English: very good"];
 
 const professionalExperience = [
   {
