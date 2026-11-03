@@ -66,6 +66,7 @@ const technicalSkills = [
 ];
 
 const education = "BSc in Computer Systems Engineering - Cordoba Private University (2024)";
+const educationLink = "https://www.cpu.edu.sy/home";
 
 const languages = ["Northern Kurdish: native", "Central Kurdish: good", "Arabic: native", "English: very good"];
 

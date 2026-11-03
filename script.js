@@ -30,7 +30,7 @@ function populateProfile() {
 
   const whatsapp = `https://wa.me/${phone.replace(/\D/g, "")}?text=Hello%20Mahmoud`;
   document.getElementById("contact").innerHTML = `
-    <li>${icon("location")}${escapeHtml(contactInfo)}</li>
+    <li>${icon("location")}${escapeHtml(contactInfo)}<img class="flag" src="flag-kurdistan.svg" alt="Flag of Kurdistan" width="21" height="14" /></li>
     <li>${icon("email")}<a href="mailto:${email}">${escapeHtml(email)}</a></li>
     <li>${icon("phone")}<a href="${whatsapp}" target="_blank" rel="noopener">${escapeHtml(phone)}</a></li>
     <li>${icon("linkedin")}<a href="${linkedin}" target="_blank" rel="noopener">LinkedIn</a></li>
@@ -112,10 +112,16 @@ function populateProjects() {
 function populateEducation() {
   // Format: "Degree - Institution (Year)"
   const [degree, ...rest] = education.split(" - ");
+  const details = rest.join(" - ");
+  // Link the institution name (text before the year) when a link is set
+  const match = details.match(/^(.*?)(\s*\(.*\))?$/);
+  const institution = isRealLink(typeof educationLink === "undefined" ? "" : educationLink)
+    ? `<a href="${educationLink}" target="_blank" rel="noopener">${escapeHtml(match[1])}</a>${escapeHtml(match[2] || "")}`
+    : escapeHtml(details);
   document.getElementById("education").innerHTML = `
     <div class="edu">
       <h3>${escapeHtml(degree)}</h3>
-      ${rest.length ? `<p>${escapeHtml(rest.join(" - "))}</p>` : ""}
+      ${details ? `<p>${institution}</p>` : ""}
     </div>`;
 }
 

@@ -349,6 +349,14 @@ p {
   gap: 6px;
 }
 
+.contact .flag {
+  width: 21px;
+  height: 14px;
+  margin-left: 4px;
+  border-radius: 2px;
+  box-shadow: 0 0 0 1px var(--border);
+}
+
 .contact svg {
   flex: none;
   color: var(--subtle);
