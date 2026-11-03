@@ -411,21 +411,13 @@ p {
   display: block;
 }
 
-.section-head::before {
-  content: "";
-  display: block;
-  width: 28px;
-  height: 2px;
-  margin-bottom: 14px;
-  background: var(--sec);
-}
-
 .section-num {
   display: inline-block;
-  margin-right: 14px;
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  font-weight: 500;
+  margin-right: 16px;
+  font-family: var(--font-serif);
+  font-size: 1.875rem;
+  font-weight: 600;
+  line-height: 1.25;
   color: var(--sec);
   font-variant-numeric: tabular-nums;
   letter-spacing: 0.04em;
@@ -873,7 +865,8 @@ a.cert:hover .cert-title svg {
     padding: 40px 0;
   }
 
-  .section-head h2 {
+  .section-head h2,
+  .section-num {
     font-size: 1.5rem;
   }
 
