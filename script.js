@@ -169,3 +169,21 @@ document.getElementById("year").textContent = new Date().getFullYear();
   media.addEventListener("change", sync);
   sync();
 })();
+
+// Highlight the nav link of the section currently in view
+(function setupActiveNav() {
+  const links = new Map(
+    [...document.querySelectorAll(".nav-links a")].map((a) => [a.getAttribute("href").slice(1), a]),
+  );
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        links.forEach((a) => a.classList.remove("active"));
+        links.get(entry.target.id)?.classList.add("active");
+      });
+    },
+    { rootMargin: "-45% 0px -50% 0px" },
+  );
+  document.querySelectorAll(".section").forEach((section) => observer.observe(section));
+})();

@@ -149,11 +149,22 @@ p {
 }
 
 .brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
   font-family: var(--font-serif);
   font-weight: 600;
   font-size: 1.05rem;
   color: var(--text);
   white-space: nowrap;
+}
+
+.brand::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+  background: var(--c1);
 }
 
 .brand:hover {
@@ -163,6 +174,7 @@ p {
 
 .nav-links {
   display: flex;
+  align-self: stretch;
   gap: 28px;
   font-size: 0.875rem;
 }
@@ -176,13 +188,27 @@ p {
   white-space: nowrap;
 }
 
+.nav-links a {
+  display: flex;
+  align-items: center;
+  border-bottom: 2px solid transparent;
+  padding-top: 2px;
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+
 .nav-links a:hover {
-  color: var(--text);
+  color: var(--sec);
   text-decoration: none;
+}
+
+.nav-links a.active {
+  color: var(--text);
+  border-bottom-color: var(--sec);
 }
 
 .topbar-actions {
   display: flex;
+  align-self: stretch;
   align-items: center;
   gap: 28px;
 }
@@ -325,6 +351,15 @@ p {
   text-decoration: none;
 }
 
+/* Section colors */
+#about, a[href="#about"] { --sec: var(--c1); }
+#experience-section, a[href="#experience-section"] { --sec: var(--c3); }
+#skills-section, a[href="#skills-section"] { --sec: var(--c2); }
+#projects-section, a[href="#projects-section"] { --sec: var(--c4); }
+#education-section, a[href="#education-section"] { --sec: var(--c5); }
+#languages-section { --sec: var(--c6); }
+#certificates-section { --sec: var(--c7); }
+
 /* Sections */
 .section {
   display: grid;
@@ -344,12 +379,21 @@ p {
   align-self: start;
 }
 
+.section-head::before {
+  content: "";
+  display: block;
+  width: 28px;
+  height: 2px;
+  margin-bottom: 14px;
+  background: var(--sec);
+}
+
 .section-num {
   display: block;
   font-family: var(--font-mono);
   font-size: 0.75rem;
   font-weight: 500;
-  color: var(--subtle);
+  color: var(--sec);
   font-variant-numeric: tabular-nums;
   letter-spacing: 0.04em;
 }
@@ -677,6 +721,10 @@ a.card:hover h3 svg {
 
   .section-head h2 {
     margin-top: 0;
+  }
+
+  .section-head::before {
+    display: none;
   }
 
   .lead {
