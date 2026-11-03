@@ -72,7 +72,7 @@ function populateSkills() {
             : `<span class="tag">${escapeHtml(s.label)}</span>`,
         )
         .join("");
-      return `<dt>${escapeHtml(group.category)}</dt><dd>${tags}</dd>`;
+      return `<div class="skill-group"><dt>${escapeHtml(group.category)}</dt><dd>${tags}</dd></div>`;
     })
     .join("");
 }
@@ -129,3 +129,25 @@ populateEducation();
 populateLanguages();
 populateCertificates();
 document.getElementById("year").textContent = new Date().getFullYear();
+
+// Theme toggle: explicit choice is stored; otherwise follows the OS setting
+(function setupThemeToggle() {
+  const root = document.documentElement;
+  const button = document.getElementById("theme-toggle");
+  const media = window.matchMedia("(prefers-color-scheme: dark)");
+  const isDark = () => (root.dataset.theme ? root.dataset.theme === "dark" : media.matches);
+  const sync = () => {
+    button.setAttribute("aria-pressed", String(isDark()));
+    button.setAttribute("aria-label", isDark() ? "Switch to light mode" : "Switch to dark mode");
+  };
+  button.addEventListener("click", () => {
+    const next = isDark() ? "light" : "dark";
+    root.dataset.theme = next;
+    try {
+      localStorage.setItem("theme", next);
+    } catch (e) {}
+    sync();
+  });
+  media.addEventListener("change", sync);
+  sync();
+})();
