@@ -476,14 +476,12 @@ p {
   max-width: 80ch;
 }
 
-.job li,
-.list li {
+.job li {
   position: relative;
   padding-left: 18px;
 }
 
-.job li::before,
-.list li::before {
+.job li::before {
   content: "";
   position: absolute;
   left: 2px;
@@ -629,29 +627,72 @@ a.card:hover h3 svg {
 .languages {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 12px 40px;
+  gap: 16px;
 }
 
-.languages li {
-  display: flex;
-  justify-content: space-between;
-  gap: 12px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid var(--border);
+.lang {
+  padding: 18px 20px 20px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  --skill-color: var(--sec);
 }
 
-.languages .level {
-  font-family: var(--font-mono);
-  font-size: 0.85rem;
-  color: var(--muted);
+.lang .skill-level {
   text-transform: capitalize;
 }
 
 /* Certificates */
-.list {
+.certs {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 10px 48px;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+.cert {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  height: 100%;
+  padding: 18px 20px;
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--sec);
+  border-radius: var(--radius);
+  color: var(--text);
+  transition: border-color 0.15s ease;
+}
+
+a.cert:hover {
+  color: var(--text);
+  border-color: var(--text);
+  border-left-color: var(--sec);
+  text-decoration: none;
+}
+
+.cert-issuer {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--sec);
+}
+
+.cert-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  font-weight: 500;
+  line-height: 1.45;
+}
+
+.cert-title svg {
+  flex: none;
+  margin-top: 3px;
+  color: var(--subtle);
+}
+
+a.cert:hover .cert-title svg {
+  color: var(--sec);
 }
 
 .footer {
@@ -670,10 +711,6 @@ a.card:hover h3 svg {
 
   .nav-links {
     gap: 20px;
-  }
-
-  .list {
-    grid-template-columns: 1fr;
   }
 }
 
@@ -773,7 +810,8 @@ a.card:hover h3 svg {
 
   .bar,
   .bar span,
-  .skill-card {
+  .skill-card,
+  .cert {
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
   }

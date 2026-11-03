@@ -119,22 +119,49 @@ function populateEducation() {
     </div>`;
 }
 
+// Proficiency shown as a bar; unknown wording falls back to a mid value
+const languageLevels = { native: 100, fluent: 85, "very good": 70, good: 55, intermediate: 40, basic: 25 };
+
 function populateLanguages() {
   document.getElementById("languages").innerHTML = languages
     .map((entry) => {
-      const [name, level] = entry.split(":").map((s) => s.trim());
-      return `<li><span>${escapeHtml(name)}</span>${level ? `<span class="level">${escapeHtml(level)}</span>` : ""}</li>`;
+      const [name, level = ""] = entry.split(":").map((s) => s.trim());
+      const percent = languageLevels[level.toLowerCase()] ?? 50;
+      return `
+        <li class="lang">
+          <div class="skill-row">
+            <span class="skill-name">${escapeHtml(name)}</span>
+            <span class="skill-level">${escapeHtml(level)}</span>
+          </div>
+          <div class="bar" role="meter" aria-label="${escapeHtml(name)}" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${percent}" aria-valuetext="${escapeHtml(level)}">
+            <span style="width:${percent}%"></span>
+          </div>
+        </li>`;
     })
     .join("");
 }
 
+function issuerOf(link) {
+  try {
+    const host = new URL(link).hostname.replace(/^www\./, "").split(".")[0];
+    return host.charAt(0).toUpperCase() + host.slice(1);
+  } catch {
+    return "";
+  }
+}
+
 function populateCertificates() {
   document.getElementById("certificates").innerHTML = certificates
-    .map(({ label, link }) =>
-      isRealLink(link)
-        ? `<li><a href="${link}" target="_blank" rel="noopener">${escapeHtml(label)}</a></li>`
-        : `<li>${escapeHtml(label)}</li>`,
-    )
+    .map(({ label, link }) => {
+      const real = isRealLink(link);
+      const issuer = real ? issuerOf(link) : "";
+      const body = `
+        ${issuer ? `<span class="cert-issuer">${escapeHtml(issuer)}</span>` : ""}
+        <span class="cert-title">${escapeHtml(label)}${real ? icon("external", 15) : ""}</span>`;
+      return real
+        ? `<li><a class="cert" href="${link}" target="_blank" rel="noopener">${body}</a></li>`
+        : `<li><div class="cert">${body}</div></li>`;
+    })
     .join("");
 }
 
