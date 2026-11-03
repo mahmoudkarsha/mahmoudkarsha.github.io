@@ -212,3 +212,51 @@ document.getElementById("year").textContent = new Date().getFullYear();
   );
   document.querySelectorAll(".section").forEach((section) => observer.observe(section));
 })();
+
+// Mouse effects: section-tinted spotlight + card border glow.
+// Only for mouse/trackpad users who haven't asked for reduced motion.
+(function setupMouseEffects() {
+  const ok = window.matchMedia("(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)");
+  if (!ok.matches) return;
+
+  const root = document.documentElement;
+  const spotlight = document.querySelector(".spotlight");
+  const cards = [...document.querySelectorAll(".skill-card, .card")];
+  root.classList.add("mouse-fx");
+
+  let x = 0;
+  let y = 0;
+  let target = null;
+  let frame = 0;
+
+  function update() {
+    frame = 0;
+    spotlight.style.setProperty("--mx", `${x}px`);
+    spotlight.style.setProperty("--my", `${y}px`);
+
+    target = document.elementFromPoint(x, y) || target; // stays correct while scrolling
+    const section = target?.closest(".section, .hero");
+    const color = section && getComputedStyle(section).getPropertyValue("--sec").trim();
+    spotlight.style.setProperty("--spot", color || getComputedStyle(root).getPropertyValue("--c1").trim());
+
+    for (const card of cards) {
+      const rect = card.getBoundingClientRect();
+      card.style.setProperty("--gx", `${x - rect.left}px`);
+      card.style.setProperty("--gy", `${y - rect.top}px`);
+    }
+  }
+
+  document.addEventListener("pointermove", (e) => {
+    if (e.pointerType !== "mouse") return;
+    x = e.clientX;
+    y = e.clientY;
+    target = e.target;
+    spotlight.classList.add("on");
+    if (!frame) frame = requestAnimationFrame(update);
+  });
+
+  document.documentElement.addEventListener("pointerleave", () => spotlight.classList.remove("on"));
+  window.addEventListener("scroll", () => {
+    if (!frame) frame = requestAnimationFrame(update);
+  }, { passive: true });
+})();

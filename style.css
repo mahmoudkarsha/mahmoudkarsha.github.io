@@ -710,6 +710,87 @@ a.cert:hover .cert-title svg {
   color: var(--subtle);
 }
 
+/* Mouse effects (enabled from script.js on fine pointers only) */
+@property --spot {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #2563eb;
+}
+
+.spotlight {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0;
+  background: radial-gradient(
+    640px circle at var(--mx, 50%) var(--my, 50%),
+    color-mix(in srgb, var(--spot) var(--spot-strength), transparent),
+    transparent 70%
+  );
+  transition: opacity 0.4s ease, --spot 0.5s ease;
+  --spot-strength: 7%;
+}
+
+:root[data-theme="dark"] .spotlight {
+  --spot-strength: 10%;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .spotlight {
+    --spot-strength: 10%;
+  }
+}
+
+.mouse-fx .spotlight.on {
+  opacity: 1;
+}
+
+.page {
+  position: relative;
+  z-index: 1;
+}
+
+.skill-card,
+.card {
+  position: relative;
+}
+
+.skill-card::before,
+.card::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  padding: 1px;
+  border-radius: inherit;
+  background: radial-gradient(
+    260px circle at var(--gx, -999px) var(--gy, -999px),
+    var(--glow),
+    transparent 65%
+  );
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.skill-card::before {
+  inset: -3px -1px -1px;
+  padding: 3px 1px 1px;
+  --glow: var(--skill-color);
+}
+
+.card::before {
+  --glow: var(--sec);
+}
+
+.mouse-fx .skills:hover .skill-card::before,
+.mouse-fx .projects:hover .card::before {
+  opacity: 1;
+}
+
 /* Responsive */
 @media (max-width: 960px) {
   :root {
@@ -796,7 +877,8 @@ a.cert:hover .cert-title svg {
 
   .topbar,
   .btn,
-  .footer {
+  .footer,
+  .spotlight {
     display: none;
   }
 
