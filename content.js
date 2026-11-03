@@ -7,7 +7,7 @@ const linkedin =
   "https://www.linkedin.com/in/mahmoud-karsha-539434340?utm_source=share_via&utm_content=profile&utm_medium=member_android";
 const contactInfo = `Erbil, Kurdistan Region`;
 
-const professionalSummary = `Software Engineer with 6+ years of experience in full-stack development, backend systems, and infrastructure. Proven ability to build scalable web and mobile applications, manage servers, and deliver production-ready solutions.`;
+const professionalSummary = `Software Engineer with 7+ years of experience in full-stack development, backend systems, and infrastructure. Proven ability to build scalable web and mobile applications, manage servers, and deliver production-ready solutions.`;
 
 // Skill level: 1 Basic, 2 Intermediate, 3 Proficient, 4 Advanced, 5 Expert
 const technicalSkills = [
@@ -48,39 +48,27 @@ const technicalSkills = [
   {
     category: "Infrastructure",
     skills: [
-      { label: "Ubuntu Server", link: "https://ubuntu.com/server", level: 4 },
       { label: "Windows Server", link: "https://www.microsoft.com/en-us/windows-server", level: 4 },
-      { label: "VPS", link: "#", level: 4 },
-      { label: "DNS", link: "#", level: 4 },
-      { label: "Email Servers", link: "#", level: 3 },
+      { label: "VPS Management", link: "#", level: 4 },
     ],
   },
   {
     category: "DevOps",
     skills: [
-      { label: "Docker and Docker Compose", link: "https://www.docker.com/", level: 4 },
+      { label: "Containers", link: "https://www.docker.com/", level: 4 },
       { label: "CI/CD", link: "#", level: 2 },
       { label: "Nginx and Traefik", link: "#", level: 3 },
     ],
   },
   {
     category: "Networking",
-    skills: [
-      { label: "Routing", link: "#", level: 4 },
-      { label: "Switching", link: "#", level: 4 },
-      { label: "Firewall Configuration", link: "#", level: 3 },
-    ],
+    skills: [{ label: "Routing & Switching", link: "#", level: 4 }],
   },
 ];
 
 const education = "BSc in Computer Systems Engineering - Cordoba Private University (2024)";
 
-const languages = [
-  "Northern Kurdish (Kurmanji): native",
-  "Central Kurdish (Sorani): good",
-  "Arabic: fluent",
-  "English: very good",
-];
+const languages = ["Northern Kurdish: native", "Central Kurdish: good", "Arabic: fluent", "English: very good"];
 
 const professionalExperience = [
   {
@@ -152,7 +140,8 @@ const projects = [
   {
     name: "Archive Project",
     link: "https://github.com/mahmoudkarsha/archive-project",
-    description: "A desktop archive application built with Electron, React, and Express.js, with full-text search across document contents.",
+    description:
+      "A desktop archive application built with Electron, React, and Express.js, with full-text search across document contents.",
   },
   {
     name: "IT Solutions Project",
