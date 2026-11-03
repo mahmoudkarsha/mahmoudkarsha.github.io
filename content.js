@@ -9,65 +9,66 @@ const contactInfo = `Erbil, Kurdistan Region`;
 
 const professionalSummary = `Software Engineer with 6+ years of experience in full-stack development, backend systems, and infrastructure. Proven ability to build scalable web and mobile applications, manage servers, and deliver production-ready solutions.`;
 
+// Skill level: 1 Basic, 2 Intermediate, 3 Proficient, 4 Advanced, 5 Expert
 const technicalSkills = [
   {
     category: "Languages",
     skills: [
-      { label: "TypeScript/JavaScript", link: "https://www.typescriptlang.org/" },
-      { label: "Python", link: "https://www.python.org/" },
-      { label: "Dart", link: "https://dart.dev/" },
+      { label: "TypeScript/JavaScript", link: "https://www.typescriptlang.org/", level: 5 },
+      { label: "Python", link: "https://www.python.org/", level: 3 },
+      { label: "Dart", link: "https://dart.dev/", level: 3 },
     ],
   },
   {
     category: "Front-End Frameworks",
     skills: [
-      { label: "React", link: "https://reactjs.org/" },
-      { label: "Flutter", link: "https://flutter.dev/" },
-      { label: "Next.js", link: "https://nextjs.org/" },
-      { label: "React Native (Expo)", link: "https://reactnative.dev/" },
+      { label: "React", link: "https://reactjs.org/", level: 5 },
+      { label: "Flutter", link: "https://flutter.dev/", level: 3 },
+      { label: "Next.js", link: "https://nextjs.org/", level: 4 },
+      { label: "React Native (Expo)", link: "https://reactnative.dev/", level: 3 },
     ],
   },
   {
     category: "Back-End Frameworks",
     skills: [
-      { label: "NestJS", link: "https://nestjs.com/" },
-      { label: "Express.js", link: "https://expressjs.com/" },
-      { label: "FastAPI", link: "https://fastapi.tiangolo.com/" },
+      { label: "NestJS", link: "https://nestjs.com/", level: 4 },
+      { label: "Express.js", link: "https://expressjs.com/", level: 5 },
+      { label: "FastAPI", link: "https://fastapi.tiangolo.com/", level: 3 },
     ],
   },
   {
     category: "Databases",
     skills: [
-      { label: "MongoDB", link: "https://www.mongodb.com/" },
-      { label: "PostgreSQL", link: "https://www.postgresql.org/" },
-      { label: "Redis", link: "https://redis.io/" },
+      { label: "MongoDB", link: "https://www.mongodb.com/", level: 4 },
+      { label: "PostgreSQL", link: "https://www.postgresql.org/", level: 4 },
+      { label: "Redis", link: "https://redis.io/", level: 3 },
     ],
   },
-  { category: "AI", skills: [{ label: "RAG Systems and AI Agents", link: "#" }] },
+  { category: "AI", skills: [{ label: "RAG Systems and AI Agents", link: "#", level: 3 }] },
   {
     category: "Infrastructure",
     skills: [
-      { label: "Ubuntu Server", link: "https://ubuntu.com/server" },
-      { label: "Windows Server", link: "https://www.microsoft.com/en-us/windows-server" },
-      { label: "VPS", link: "#" },
-      { label: "DNS", link: "#" },
-      { label: "Email Servers", link: "#" },
+      { label: "Ubuntu Server", link: "https://ubuntu.com/server", level: 4 },
+      { label: "Windows Server", link: "https://www.microsoft.com/en-us/windows-server", level: 4 },
+      { label: "VPS", link: "#", level: 4 },
+      { label: "DNS", link: "#", level: 4 },
+      { label: "Email Servers", link: "#", level: 3 },
     ],
   },
   {
     category: "DevOps",
     skills: [
-      { label: "Docker and Docker Compose", link: "https://www.docker.com/" },
-      { label: "CI/CD (basic)", link: "#" },
-      { label: "Nginx and Traefik", link: "#" },
+      { label: "Docker and Docker Compose", link: "https://www.docker.com/", level: 4 },
+      { label: "CI/CD", link: "#", level: 2 },
+      { label: "Nginx and Traefik", link: "#", level: 3 },
     ],
   },
   {
     category: "Networking",
     skills: [
-      { label: "Routing", link: "#" },
-      { label: "Switching", link: "#" },
-      { label: "Firewall Configuration", link: "#" },
+      { label: "Routing", link: "#", level: 4 },
+      { label: "Switching", link: "#", level: 4 },
+      { label: "Firewall Configuration", link: "#", level: 3 },
     ],
   },
 ];

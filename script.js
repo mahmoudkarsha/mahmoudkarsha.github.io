@@ -61,18 +61,36 @@ function populateExperience() {
     .join("");
 }
 
+const skillLevels = ["Basic", "Intermediate", "Proficient", "Advanced", "Expert"];
+
 function populateSkills() {
   const container = document.getElementById("skills");
   container.innerHTML = technicalSkills
-    .map((group) => {
-      const tags = group.skills
-        .map((s) =>
-          isRealLink(s.link)
-            ? `<a class="tag" href="${s.link}" target="_blank" rel="noopener">${escapeHtml(s.label)}</a>`
-            : `<span class="tag">${escapeHtml(s.label)}</span>`,
-        )
+    .map((group, i) => {
+      const rows = group.skills
+        .map((s) => {
+          const level = Math.min(Math.max(Number(s.level) || 3, 1), 5);
+          const levelName = skillLevels[level - 1];
+          const name = isRealLink(s.link)
+            ? `<a href="${s.link}" target="_blank" rel="noopener">${escapeHtml(s.label)}</a>`
+            : escapeHtml(s.label);
+          return `
+            <li class="skill">
+              <div class="skill-row">
+                <span class="skill-name">${name}</span>
+                <span class="skill-level">${levelName}</span>
+              </div>
+              <div class="bar" role="meter" aria-label="${escapeHtml(s.label)}" aria-valuemin="1" aria-valuemax="5" aria-valuenow="${level}" aria-valuetext="${levelName}">
+                <span style="width:${level * 20}%"></span>
+              </div>
+            </li>`;
+        })
         .join("");
-      return `<div class="skill-group"><dt>${escapeHtml(group.category)}</dt><dd>${tags}</dd></div>`;
+      return `
+        <article class="skill-card" style="--skill-color: var(--c${(i % 8) + 1})">
+          <h3>${escapeHtml(group.category)}</h3>
+          <ul>${rows}</ul>
+        </article>`;
     })
     .join("");
 }
