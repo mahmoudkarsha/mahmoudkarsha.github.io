@@ -6,17 +6,15 @@
   --subtle: #85888e;
   --border: #e4e4e1;
   --rule: #1b1c1e;
-  --c1: #2563eb;
-  --c2: #0d9488;
-  --c3: #4f46e5;
-  --c4: #0891b2;
-  --c5: #7c3aed;
-  --c6: #059669;
-  --c7: #0369a1;
-  --c8: #475569;
+  --c1: #d3202a; /* Kurdistan red */
+  --c2: #1e7f3e; /* Kurdistan green */
+  --c3: #c48c00; /* Kurdistan sun (deepened for contrast on light) */
+  --flag-red: #ed2024;
+  --flag-green: #278e43;
+  --flag-sun: #febd11;
   --track: #ebecef;
-  --accent: #1f3a68;
-  --accent-hover: #142a4f;
+  --accent: #1e7f3e;
+  --accent-hover: #166331;
   --radius: 3px;
   --font-serif: "Source Serif 4", Georgia, "Times New Roman", serif;
   --font-sans: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
@@ -35,17 +33,12 @@
     --subtle: #76797e;
     --border: #2a2b2f;
     --rule: #e6e6e3;
-    --c1: #60a5fa;
-    --c2: #2dd4bf;
-    --c3: #818cf8;
-    --c4: #22d3ee;
-    --c5: #a78bfa;
-    --c6: #34d399;
-    --c7: #38bdf8;
-    --c8: #94a3b8;
+    --c1: #f2545a;
+    --c2: #46b26a;
+    --c3: #febd11;
     --track: #26282d;
-    --accent: #9db7e0;
-    --accent-hover: #bccfee;
+    --accent: #5cc07f;
+    --accent-hover: #7fd19c;
     color-scheme: dark;
   }
 }
@@ -58,17 +51,12 @@
   --subtle: #76797e;
   --border: #2a2b2f;
   --rule: #e6e6e3;
-  --c1: #60a5fa;
-  --c2: #2dd4bf;
-  --c3: #818cf8;
-  --c4: #22d3ee;
-  --c5: #a78bfa;
-  --c6: #34d399;
-  --c7: #38bdf8;
-  --c8: #94a3b8;
+  --c1: #f2545a;
+  --c2: #46b26a;
+  --c3: #febd11;
   --track: #26282d;
-  --accent: #9db7e0;
-  --accent-hover: #bccfee;
+  --accent: #5cc07f;
+  --accent-hover: #7fd19c;
   color-scheme: dark;
 }
 
@@ -163,7 +151,8 @@ p {
   width: 8px;
   height: 8px;
   border-radius: 2px;
-  background: var(--c1);
+  background: linear-gradient(var(--flag-red) 0 33.3%, #fff 33.3% 66.6%, var(--flag-green) 66.6%);
+  box-shadow: 0 0 0 1px var(--border);
 }
 
 .brand:hover {
@@ -393,14 +382,14 @@ p {
   text-decoration: none;
 }
 
-/* Section colors */
-#about, a[href="#about"] { --sec: var(--c1); }
-#experience-section, a[href="#experience-section"] { --sec: var(--c3); }
+/* Section colors: Kurdistan flag (red, green, sun) */
+#about, a[href="#about"] { --sec: var(--c2); }
+#experience-section, a[href="#experience-section"] { --sec: var(--c1); }
 #skills-section, a[href="#skills-section"] { --sec: var(--c2); }
-#projects-section, a[href="#projects-section"] { --sec: var(--c4); }
-#education-section, a[href="#education-section"] { --sec: var(--c5); }
-#languages-section { --sec: var(--c6); }
-#certificates-section { --sec: var(--c7); }
+#projects-section, a[href="#projects-section"] { --sec: var(--c3); }
+#education-section, a[href="#education-section"] { --sec: var(--c1); }
+#certificates-section { --sec: var(--c2); }
+#languages-section { --sec: var(--c3); }
 
 /* Sections */
 .section {
@@ -742,7 +731,7 @@ a.cert:hover .cert-title svg {
 @property --spot {
   syntax: "<color>";
   inherits: true;
-  initial-value: #2563eb;
+  initial-value: #1e7f3e;
 }
 
 .spotlight {

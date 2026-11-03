@@ -87,7 +87,7 @@ function populateSkills() {
         })
         .join("");
       return `
-        <article class="skill-card" style="--skill-color: var(--c${(i % 8) + 1})">
+        <article class="skill-card" style="--skill-color: var(--c${(i % 3) + 1})">
           <h3>${escapeHtml(group.category)}</h3>
           <ul>${rows}</ul>
         </article>`;
@@ -243,7 +243,7 @@ document.getElementById("year").textContent = new Date().getFullYear();
     target = document.elementFromPoint(x, y) || target; // stays correct while scrolling
     const section = target?.closest(".section, .hero");
     const color = section && getComputedStyle(section).getPropertyValue("--sec").trim();
-    spotlight.style.setProperty("--spot", color || getComputedStyle(root).getPropertyValue("--c1").trim());
+    spotlight.style.setProperty("--spot", color || getComputedStyle(root).getPropertyValue("--c2").trim());
 
     for (const card of cards) {
       const rect = card.getBoundingClientRect();
