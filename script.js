@@ -210,7 +210,7 @@ document.getElementById("year").textContent = new Date().getFullYear();
     },
     { rootMargin: "-45% 0px -50% 0px" },
   );
-  document.querySelectorAll(".section").forEach((section) => observer.observe(section));
+  document.querySelectorAll(".hero, .section").forEach((section) => observer.observe(section));
 })();
 
 // Mouse effects: section-tinted spotlight + card border glow.

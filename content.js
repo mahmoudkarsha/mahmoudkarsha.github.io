@@ -1,5 +1,5 @@
 // Variables for dynamic content
-const profileImage = "https://avatars.githubusercontent.com/u/63265034?s=256&v=4";
+const profileImage = "https://avatars.githubusercontent.com/u/63265034?s=800&v=4";
 const fullName = "Mahmoud Abdulbari Karsha";
 const email = "mahmoud.bari.karsha@gmail.com";
 const phone = "+964 751 760 6295";
