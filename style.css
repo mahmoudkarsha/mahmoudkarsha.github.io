@@ -23,7 +23,6 @@
   --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Consolas, monospace;
   --page-width: 1200px;
   --gutter: 40px;
-  --label-col: 240px;
   color-scheme: light;
 }
 
@@ -398,8 +397,8 @@ p {
 /* Sections */
 .section {
   display: grid;
-  grid-template-columns: var(--label-col) 1fr;
-  gap: 48px;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 36px;
   padding: 56px 0;
   border-top: 1px solid var(--border);
 }
@@ -409,9 +408,7 @@ p {
 }
 
 .section-head {
-  position: sticky;
-  top: 88px;
-  align-self: start;
+  display: block;
 }
 
 .section-head::before {
@@ -424,7 +421,8 @@ p {
 }
 
 .section-num {
-  display: block;
+  display: inline-block;
+  margin-right: 14px;
   font-family: var(--font-mono);
   font-size: 0.75rem;
   font-weight: 500;
@@ -434,9 +432,9 @@ p {
 }
 
 .section-head h2 {
-  margin-top: 6px;
+  display: inline;
   font-family: var(--font-serif);
-  font-size: 1.5rem;
+  font-size: 1.875rem;
   font-weight: 600;
   letter-spacing: -0.005em;
   line-height: 1.25;
@@ -824,7 +822,6 @@ a.cert:hover .cert-title svg {
 /* Responsive */
 @media (max-width: 960px) {
   :root {
-    --label-col: 160px;
     --gutter: 28px;
   }
 
@@ -872,24 +869,12 @@ a.cert:hover .cert-title svg {
   }
 
   .section {
-    grid-template-columns: 1fr;
-    gap: 20px;
+    gap: 24px;
     padding: 40px 0;
   }
 
-  .section-head {
-    position: static;
-    display: flex;
-    align-items: baseline;
-    gap: 10px;
-  }
-
   .section-head h2 {
-    margin-top: 0;
-  }
-
-  .section-head::before {
-    display: none;
+    font-size: 1.5rem;
   }
 
   .languages {
@@ -928,13 +913,8 @@ a.cert:hover .cert-title svg {
 
   .section {
     padding: 18px 0;
-    gap: 24px;
-    grid-template-columns: 140px 1fr;
+    gap: 14px;
     break-inside: avoid;
-  }
-
-  .section-head {
-    position: static;
   }
 
   .skill-card {
