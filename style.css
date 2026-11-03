@@ -213,6 +213,10 @@ p {
   gap: 28px;
 }
 
+.topbar-actions .theme-toggle {
+  margin-right: -14px; /* keep toggle and CV button grouped */
+}
+
 .theme-toggle {
   display: inline-grid;
   place-items: center;
@@ -265,7 +269,7 @@ p {
 /* Hero */
 .hero {
   display: grid;
-  grid-template-columns: auto 1fr auto;
+  grid-template-columns: auto 1fr;
   gap: 36px;
   align-items: center;
   padding-bottom: 56px;
@@ -333,8 +337,9 @@ p {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 11px 20px;
-  font-size: 0.78rem;
+  height: 34px;
+  padding: 0 14px;
+  font-size: 0.72rem;
   font-weight: 500;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -626,73 +631,76 @@ a.card:hover h3 svg {
 /* Languages */
 .languages {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 16px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 48px;
 }
 
 .lang {
-  padding: 18px 20px 20px;
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 96px 72px;
+  align-items: center;
+  gap: 16px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
   --skill-color: var(--sec);
 }
 
-.lang .skill-level {
+.lang .bar {
+  margin-top: 0;
+  height: 4px;
+}
+
+.lang-level {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--subtle);
+  text-align: right;
   text-transform: capitalize;
+  white-space: nowrap;
 }
 
 /* Certificates */
-.certs {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 16px;
+.certs li {
+  border-bottom: 1px solid var(--border);
 }
 
 .cert {
   display: flex;
-  flex-direction: column;
-  gap: 6px;
-  height: 100%;
-  padding: 18px 20px;
-  border: 1px solid var(--border);
-  border-left: 3px solid var(--sec);
-  border-radius: var(--radius);
+  align-items: baseline;
+  gap: 16px;
+  padding: 10px 0;
   color: var(--text);
-  transition: border-color 0.15s ease;
 }
 
 a.cert:hover {
-  color: var(--text);
-  border-color: var(--text);
-  border-left-color: var(--sec);
+  color: var(--sec);
   text-decoration: none;
 }
 
-.cert-issuer {
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: var(--sec);
-}
-
 .cert-title {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  order: 1;
   font-weight: 500;
-  line-height: 1.45;
 }
 
 .cert-title svg {
   flex: none;
-  margin-top: 3px;
   color: var(--subtle);
 }
 
 a.cert:hover .cert-title svg {
   color: var(--sec);
+}
+
+.cert-issuer {
+  order: 2;
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--subtle);
+  white-space: nowrap;
 }
 
 .footer {
@@ -764,6 +772,10 @@ a.cert:hover .cert-title svg {
     display: none;
   }
 
+  .languages {
+    grid-template-columns: 1fr;
+  }
+
   .lead {
     font-size: 1.075rem;
   }
@@ -810,8 +822,7 @@ a.cert:hover .cert-title svg {
 
   .bar,
   .bar span,
-  .skill-card,
-  .cert {
+  .skill-card {
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
   }

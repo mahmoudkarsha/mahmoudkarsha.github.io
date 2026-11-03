@@ -129,13 +129,11 @@ function populateLanguages() {
       const percent = languageLevels[level.toLowerCase()] ?? 50;
       return `
         <li class="lang">
-          <div class="skill-row">
-            <span class="skill-name">${escapeHtml(name)}</span>
-            <span class="skill-level">${escapeHtml(level)}</span>
-          </div>
+          <span class="lang-name">${escapeHtml(name)}</span>
           <div class="bar" role="meter" aria-label="${escapeHtml(name)}" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${percent}" aria-valuetext="${escapeHtml(level)}">
             <span style="width:${percent}%"></span>
           </div>
+          <span class="lang-level">${escapeHtml(level)}</span>
         </li>`;
     })
     .join("");
