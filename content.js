@@ -19,19 +19,19 @@ const technicalSkills = [
     ],
   },
   {
-    category: "Front End Frameworks",
+    category: "Front-End Frameworks",
     skills: [
       { label: "React", link: "https://reactjs.org/" },
       { label: "Flutter", link: "https://flutter.dev/" },
-      { label: "NextJS", link: "https://nextjs.org/" },
+      { label: "Next.js", link: "https://nextjs.org/" },
       { label: "React Native (Expo)", link: "https://reactnative.dev/" },
     ],
   },
   {
-    category: "Back End Frameworks",
+    category: "Back-End Frameworks",
     skills: [
       { label: "NestJS", link: "https://nestjs.com/" },
-      { label: "ExpressJs", link: "https://expressjs.com/" },
+      { label: "Express.js", link: "https://expressjs.com/" },
       { label: "FastAPI", link: "https://fastapi.tiangolo.com/" },
     ],
   },
@@ -43,7 +43,7 @@ const technicalSkills = [
       { label: "Redis", link: "https://redis.io/" },
     ],
   },
-  { category: "AI", skills: [{ label: "RAG systems and AI Agents", link: "#" }] },
+  { category: "AI", skills: [{ label: "RAG Systems and AI Agents", link: "#" }] },
   {
     category: "Infrastructure",
     skills: [
@@ -86,16 +86,16 @@ const professionalExperience = [
     title: "Software Engineer - NewStarters (Remote, Germany)",
     duration: "Feb 2023 - Present",
     responsibilities: [
-      "Built many web applications using React, NextJS, and NestJS for various clients in Germany.",
-      "Built FastAPI service for serving AI services",
-      "Built many Typescript libraries for internal use and open source.",
-      "Built RAG system for document search and question answering using Langchain, OpenAI, OpenRouter and FAISS.",
-      "Built SSO Idp and authorization server (OAuth2 and OpenID Connect).",
-      "Built Multi-Product microservice based platform that acts as a foundation for various applications.",
-      "Built interactive landing pages using React and NextJS.",
-      "Developed mobile applications using Flutter",
-      "Developed WhatsApp chatbot",
-      "Managed VPS infrastructure, DNS, custom cloud (Coolify), Dockers, Traefik proxy, and email servers (Mailcow).",
+      "Built web applications for clients in Germany using React, Next.js, and NestJS.",
+      "Built a FastAPI service for serving AI models and features.",
+      "Built TypeScript libraries for internal use and open-source release.",
+      "Built a RAG system for document search and question answering using LangChain, OpenAI, OpenRouter, and FAISS.",
+      "Built an SSO identity provider and authorization server (OAuth 2.0 and OpenID Connect).",
+      "Built a multi-product, microservice-based platform that serves as the foundation for several applications.",
+      "Built interactive landing pages using React and Next.js.",
+      "Developed mobile applications using Flutter.",
+      "Developed a WhatsApp chatbot.",
+      "Managed VPS infrastructure, DNS, a self-hosted cloud (Coolify), Docker, the Traefik proxy, and email servers (Mailcow).",
     ],
   },
   {
@@ -114,7 +114,7 @@ const professionalExperience = [
     responsibilities: [
       "Built chat applications with file transfer and calling features.",
       "Developed financial and salary management systems.",
-      "Delivered delivery mobile app with backend and dashboard.",
+      "Delivered a delivery mobile app with its backend and admin dashboard.",
       "Optimized legacy PHP systems and improved SQL performance.",
       "Designed frontend layouts and backend features.",
       "Built hardware-integrated solutions using Raspberry Pi and Arduino.",
@@ -132,18 +132,18 @@ const professionalExperience = [
 
 const projects = [
   {
-    name: "NodeJs Http Library",
+    name: "Node.js HTTP Library",
     link: "https://github.com/lazy-js/server",
     description:
-      "modern, TypeScript-first Node.js server framework built on Express.js. It provides a clean, modular architecture for building scalable web applications and APIs with built-in security, logging, and error handling.",
+      "A modern, TypeScript-first Node.js server framework built on Express.js. It provides a clean, modular architecture for building scalable web applications and APIs with built-in security, logging, and error handling.",
   },
   {
     name: "Error Guard Library",
     link: "https://github.com/lazy-js/error-guard",
-    description: "Advanced error transformation library for structured error management in Typescript.",
+    description: "An error transformation library for structured error management in TypeScript.",
   },
   {
-    name: "Custom Keycloak Based Auth Library",
+    name: "Keycloak Auth Library",
     link: "https://github.com/lazy-js/auth",
     description:
       "A comprehensive authentication and authorization package built on top of Keycloak, providing a unified API for user management, authentication, and role-based access control across multiple clients and applications.",
@@ -151,12 +151,12 @@ const projects = [
   {
     name: "Archive Project",
     link: "https://github.com/mahmoudkarsha/archive-project",
-    description: "Electron, React and ExpressJS based application that supports searching in docs content.",
+    description: "A desktop archive application built with Electron, React, and Express.js, with full-text search across document contents.",
   },
   {
     name: "IT Solutions Project",
     link: "https://github.com/mahmoudkarsha/it-solutions-website",
-    description: "React website for an IT company.",
+    description: "A company website for an IT services firm, built with React.",
   },
 ];
 
